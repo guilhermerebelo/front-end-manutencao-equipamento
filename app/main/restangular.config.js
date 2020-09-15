@@ -3,7 +3,7 @@
 var Swal = require("sweetalert2");
 
 module.exports = function (RestangularProvider) {
-    RestangularProvider.setBaseUrl("http://localhost:8080");
+    RestangularProvider.setBaseUrl("http://localhost:8080/api");
 
     //interceptor
     RestangularProvider.setErrorInterceptor(function (response) {
