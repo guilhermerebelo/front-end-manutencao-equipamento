@@ -1,0 +1,56 @@
+<form name="form">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">{{vm.title}} cliente</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="row form-row space-row">
+            <div class="col-md-9">
+                <label>Nome</label>
+                <input required name="nome" ng-model="vm.cliente.nome" ng-required="true" type="text"
+                    class="form-control" maxlength="100" placeholder="Nome"
+                    ng-class="{'is-invalid': form.nome.$invalid && !form.nome.$pristine}">
+            </div>
+            <div class="col-md-3">
+                <label>Sexo</label>
+                <select ng-model="vm.cliente.sexo" class="form-control">
+                    <option value="">Selecione</option>
+                    <option value="MASCULINO">Masculino</option>
+                    <option value="FEMININO">Feminino</option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-row space-row">
+            <div class="col-md-9">
+                <label>Endereço</label>
+                <input required name="endereco" ng-model="vm.cliente.endereco" ng-required="true" type="text"
+                    class="form-control" maxlength="100" placeholder="Endereço"
+                    ng-class="{'is-invalid': form.endereco.$invalid && !form.endereco.$pristine}">
+            </div>
+            <div class="col-md-3">
+                <label>Cpf</label>
+                <input mask="999.999.999-99" required name="cpf" ng-required="true" ng-model="vm.cliente.cpf"
+                    type="text" ng-class="{'is-invalid': form.cpf.$invalid && !form.cpf.$pristine}" class="form-control"
+                    ng-pattern="/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/" placeholder="CPF">
+            </div>
+        </div>
+        <div class="row form-row space-row">
+            <div class="col-md-8">
+                <label>Email</label>
+                <input ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-model="vm.cliente.email"
+                    type="email" class="form-control" placeholder="Email" maxlength="100"
+                    ng-class="{'is-invalid': form.email.$invalid && !form.email.$pristine}">
+            </div>
+            <div class="col-md-4">
+                <label>Telefone</label>
+                <input name="telefone" ng-model="vm.cliente.telefone" type="phone" class="form-control"
+                    placeholder="Telefone" maxlength="100"
+                    ng-class="{'is-invalid': form.telefone.$invalid && !form.telefone.$pristine}">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="form.$invalid" class="btn btn-primary" ng-click="vm.save()">SALVAR</button>
+        <button ng-if="vm.isEdit" class="btn btn-danger" ng-click="vm.remove()">EXCLUIR</button>
+        <button class="btn btn-light" ng-click="vm.cancel()">CANCELAR</button>
+    </div>
+</form>

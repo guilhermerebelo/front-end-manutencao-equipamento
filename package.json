@@ -1,0 +1,60 @@
+{
+    "name": "cadastro",
+    "version": "1.0.0",
+    "module": "src/index.js",
+    "scripts": {
+        "build": "rimraf dist && webpack --bail --progress --profile",
+        "server": "webpack-dev-server --history-api-fallback --inline --progress",
+        "test": "karma start",
+        "test-watch": "karma start --auto-watch --no-single-run --browsers Chrome_without_security",
+        "start": "npm run server",
+        "lint": "eslint ./src/",
+        "lint-fix": "eslint ./src/ --fix"
+    },
+    "devDependencies": {
+        "angular-mocks": "~1.4",
+        "css-loader": "^0.26.4",
+        "eslint": "~4.9.0",
+        "eslint-config-prettier": "~2.6.0",
+        "eslint-plugin-prettier": "~2.3.1",
+        "extract-text-webpack-plugin": "~3.0.1",
+        "file-loader": "^6.0.0",
+        "html-loader": "~0.5.0",
+        "html-webpack-plugin": "~3.0.7",
+        "istanbul-instrumenter-loader": "~3.0.0",
+        "jasmine-core": "~3.1.0",
+        "karma": "^1.7.1",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-coverage": "~1.1.1",
+        "karma-jasmine": "~1.1.0",
+        "karma-phantomjs-launcher": "~1.0.2",
+        "karma-sourcemap-loader": "~0.3.7",
+        "karma-spec-reporter": "0.0.32",
+        "karma-webpack": "~2.0.0",
+        "phantomjs-prebuilt": "^2.1.14",
+        "prettier": "latest",
+        "rimraf": "~2.5.4",
+        "style-loader": "~0.13.1",
+        "webpack": "~3.8.1",
+        "webpack-bundle-analyzer": "~2.9.2",
+        "webpack-dev-server": "2.9.7",
+        "webpack-unused": "~0.1.0"
+    },
+    "dependencies": {
+        "angular": "~1.4.8",
+        "angular-promise-tracker": "^2.2.2",
+        "angular-ui-bootstrap": "^2.5.6",
+        "angular-ui-router": "^1.0.25",
+        "chart.js": "^2.9.3",
+        "js-base64": "^2.5.2",
+        "lodash": "~3.10",
+        "moment": "^2.21.0",
+        "ng-mask": "^3.1.1",
+        "restangular": "^1.6.1",
+        "sweetalert2": "^9.10.7",
+        "ui-select": "^0.19.8"
+    },
+    "repository": {
+        "type": "git"
+    }
+}

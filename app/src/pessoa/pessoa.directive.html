@@ -1,0 +1,66 @@
+<div class="row space-row">
+    <div class="col-md-12">
+        <h4>Cadastro de clientes</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <button class="btn btn-primary" ng-click="vm.openModal()">ADICIONAR CLIENTE</button>
+    </div>
+    <div class="col-md-5">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar" aria-describedby="inputGroupPrepend"
+                    ng-model="vm.filter" ng-keyup="$event.keyCode == 13 ? vm.listAll() : null" maxlength="100">
+                <div style="cursor: pointer;" ng-click="vm.listAll()" class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-12" style="min-height: 300px;">
+        <table class="table" ng-if="vm.content.length > 0">
+            <thead>
+                <tr>
+                    <th class="align-middle" >NOME</th>
+                    <th class="align-middle" style="width: 350px">EMAIL</th>
+                    <th class="align-middle" style="width: 140px">TELEFONE</th>
+                    <th class="align-middle" style="width: 140px">SEXO</th>
+                    <th class="align-middle" style="width: 45px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cliente in vm.content">
+                    <td>
+                        <span style="font-size: 1.1em;">{{cliente.nome}}</span> <br>
+                        <small class="text-muted">cpf {{cliente.cpf | cpfMask}}</small>
+                    </td>
+                    <td class="align-middle">
+                        {{cliente.email}}
+                    </td>
+                    <td class="align-middle">
+                        {{cliente.telefone}}
+                    </td>
+                    <td class="align-middle">
+                        <display-enum tipo="SEXO" enum="cliente.sexo"></display-enum>
+                    </td>
+                    <td class="align-middle">
+                        <a href ng-click="vm.openModal(cliente.id)"><i class="fa fa-pencil"></i></a>
+                        <a href ng-click="vm.remove(cliente.id)"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-if="vm.content.length === 0" class="text-center">
+            <h4>Não há itens na listagem</h4>
+        </div>
+
+        <div class="pull-right">
+            <ul uib-pagination total-items="vm.totalElements" ng-model="vm.pageNumber" ng-change="vm.listAll()"
+                previous-text="&lsaquo;" next-text="&rsaquo;"></ul>
+        </div>
+    </div>
+</div>

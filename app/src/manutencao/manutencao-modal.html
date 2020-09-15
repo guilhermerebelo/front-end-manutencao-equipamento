@@ -1,0 +1,44 @@
+<form name="form">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Adicionar movimentação de serviço</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <div class="row form-row space-row">
+            <div class="col-md-4">
+                <label>Equipamento</label>
+                <input class="form-control" ng-disabled="true" name="equipamento"
+                    ng-model="vm.movimentacao.servico.equipamento" type="text">
+            </div>
+            <div class="col-md-4">
+                <label>Tipo</label>
+                <select name="tipo" ng-required="true" ng-model="vm.movimentacao.tipo" class="form-control"
+                    ng-class="{'is-invalid': form.tipo.$invalid && !form.tipo.$pristine}">
+                    <option value="">Selecione</option>
+                    <option value="PENDENTE">Pendente</option>
+                    <option value="EM_EXECUCAO">Em execução</option>
+                    <option value="FINALIZADO">Finalizado</option>
+                    <option value="INTERROMPIDO">Interrompido</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label>Data da movimentação</label>
+                <input name="data" ng-required="true" type="date" ng-model="vm.movimentacao.data" class="form-control"
+                    date-format ng-class="{'is-invalid': form.data.$invalid && !form.data.$pristine}">
+            </div>
+        </div>
+        <div class="row form-row space-row">
+            <div class="col-md-12">
+                <label>Descrição</label>
+                <textarea ng-required="true" name="descricao" ng-model="vm.movimentacao.descricao"
+                    placeholder="Descrição" class="form-control" rows="3"
+                    ng-class="{'is-invalid': form.descricao.$invalid && !form.descricao.$pristine}">
+                    </textarea>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-disabled="form.$invalid" class="btn btn-primary" ng-click="vm.save()">SALVAR</button>
+        <button ng-if="vm.isEdit" class="btn btn-danger" ng-click="vm.remove()">EXCLUIR</button>
+        <button class="btn btn-light" ng-click="vm.cancel()">CANCELAR</button>
+    </div>
+</form>

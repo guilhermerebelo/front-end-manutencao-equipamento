@@ -1,0 +1,69 @@
+<div ng-if="!vm.servico">
+    <div class="row space-row">
+        <div class="col-md-12">
+            <h4>Controle de manutenção</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-5">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar" aria-describedby="inputGroupPrepend"
+                        ng-model="vm.filter" ng-keyup="$event.keyCode == 13 ? vm.listAll() : null" maxlength="100">
+                    <div style="cursor: pointer;" ng-click="vm.listAll()" class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12" style="min-height: 300px;">
+            <table class="table" ng-if="vm.content.length > 0">
+                <thead>
+                    <tr>
+                        <th class="align-middle">EQUIPAMENTO</th>
+                        <th class="align-middle" style="width: 380px;">DEFEITO</th>
+                        <th class="align-middle" style="width: 250px">CLIENTE</th>
+                        <th class="align-middle" style="width: 200px;">SITUACAO</th>
+                        <th class="align-middle" style="width: 45px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="servico in vm.content">
+                        <td class="align-middle">
+                            {{servico.equipamento}}
+                        </td>
+                        <td class="align-middle">
+                            {{servico.problema}}
+                        </td>
+                        <td class="align-middle">
+                            {{servico.cliente.nome}}
+                        </td>
+                        <td class="align-middle">
+                            <display-enum tipo="SITUACAO_SERVICO" enum="servico.situacao"></display-enum>
+                        </td>
+                        <td class="align-middle">
+                            <a href ng-click="vm.adicionarMovimentacao(servico)"><i class="fa fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="vm.content.length === 0" class="text-center">
+                <h4>Não há itens na listagem</h4>
+            </div>
+
+            <div class="pull-right">
+                <ul uib-pagination total-items="vm.totalElements" ng-model="vm.pageNumber" ng-change="vm.listAll()"
+                    previous-text="&lsaquo;" next-text="&rsaquo;"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="vm.servico">
+    <me-movimentacao servico="vm.servico" voltar="vm.voltarParaEsseState()"><me-movimentacao>
+</div>

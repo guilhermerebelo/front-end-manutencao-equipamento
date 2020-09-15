@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Controle de manutenção de equipamentos</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
+
+      <li ng-repeat="menu in vm.menus" ng-class="{'nav-item': true, 'active': menu.active}">
+        <a class="nav-link" href="#" ng-click="vm.setMenu(menu)">{{menu.descricao}}</a>
+      </li>
+      
+      
+      <!-- <li class="nav-item active">
+        <a class="nav-link" href="#">Visão geral dos serviços</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Serviços</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Movimentação</a>
+      </li> -->
+    </ul>
+  </div>
+</nav>
+
+<main class="content-wrapper">
+  <div class="container-fluid">
+    <me-render-directive directive="vm.selectMenu.directive"></me-render-directive>
+  </div>
+</main>

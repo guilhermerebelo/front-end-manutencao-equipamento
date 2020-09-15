@@ -1,0 +1,76 @@
+<div>
+    <a href=""ng-click="vm.voltar()" >VOLTAR</a>
+    <div class="row space-row">
+        <div class="col-md-12">
+            <h4>Movimentações</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="card-text">Número serviço: {{vm.servico.id}}</p>
+                            <p class="card-text">Equipamento: {{vm.servico.equipamento}}</p>
+                            <p class="card-text">Marca: {{vm.servico.marca}}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="card-text">
+                                Situação: <display-enum tipo="SITUACAO_SERVICO" enum="vm.servico.situacao">
+                                </display-enum>
+                            </p>
+                            <p class="card-text">Cliente: {{vm.servico.cliente.nome}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" ng-click="vm.openModal()">ADICIONAR MOVIMENTAÇÃO</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12" style="min-height: 300px;">
+            <table class="table" ng-if="vm.content.length > 0">
+                <thead>
+                    <tr>
+                        <th class="align-middle">DESCRIÇÃO</th>
+                        <th class="align-middle" style="width: 170px;">SITUAÇÃO</th>
+                        <th class="align-middle" style="width: 170px;">DATA</th>
+                        <th class="align-middle" style="width: 45px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="movimentacao in vm.content">
+                        <td class="align-middle">
+                            {{movimentacao.descricao}}
+                        </td>
+                        <td class="align-middle">
+                            <display-enum tipo="SITUACAO_SERVICO" enum="movimentacao.tipo"></display-enum>
+                        </td>
+                        <td class="align-middle">
+                            {{movimentacao.data | date:'dd/MM/yyyy'}}
+                        </td>
+                        <td class="align-middle">
+                            <a href ng-click="vm.openModal(movimentacao.id)"><i class="fa fa-pencil"></i></a>
+                            <a href ng-click="vm.remove(movimentacao.id)"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="vm.content.length === 0" class="text-center">
+                <h4>Não há itens na listagem</h4>
+            </div>
+
+            <div class="pull-right">
+                <ul uib-pagination total-items="vm.totalElements" ng-model="vm.pageNumber" ng-change="vm.listAll()"
+                    previous-text="&lsaquo;" next-text="&rsaquo;"></ul>
+            </div>
+        </div>
+    </div>
+</div>
