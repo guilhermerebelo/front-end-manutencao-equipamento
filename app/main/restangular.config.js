@@ -9,7 +9,7 @@ module.exports = function (RestangularProvider) {
     RestangularProvider.setErrorInterceptor(function (response) {
         if (response.status == 400) {
             Swal.fire({
-                title: response.data.errors[0].defaultMessage,
+                title: response.data.message,
                 icon: "error"
             });
         }
