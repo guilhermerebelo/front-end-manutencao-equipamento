@@ -27,7 +27,7 @@ Para rodar a aplicação o front end, é necessário ter instalado o nodejs (rec
 `npm i` <br>
 `npm start`
 
-e pronto! o front end irá abrir e rodar nesse enredeço <a>http://localhost:8080/</a>
+e pronto! o front end irá abrir e rodar nesse enredeço <a>http://localhost:9000/</a>
 
 ## License
 
